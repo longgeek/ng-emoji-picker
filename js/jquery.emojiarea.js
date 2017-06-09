@@ -501,6 +501,8 @@
 				/* ! MODIFICATION END */
 			}, 0);
 			e.stopPropagation();
+            // 点击 emoji 后，关闭 popup
+            self.hide();
 			return false;
 		});
 
