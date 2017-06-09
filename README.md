@@ -38,10 +38,10 @@ clone the img folder and place it in /assets/images/ng-emoji-picker
 
 #### Full Example
 ```
-<textarea emoji-picker ng-model="chat.message" emoji-attachment-location="bottom right" emoji-menu-location="top left" ng-keydown='handleKeyDown($event)'></textarea>
+<textarea emoji-picker="emoji-picker" ng-model="chat.message" emoji-attachment-location="top right" emoji-menu-location="bottom right" ng-keydown='handleKeyDown($event)'></textarea>
 ```
 #### Style the emoji picker
-Just add the following css 
+Just add the following css
 ```
  .emoji-picker-icon{
     font-size:20px;
