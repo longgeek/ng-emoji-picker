@@ -665,7 +665,7 @@
 	  return{
 	    link: function(scope, element, attrs){
           // 等待 ng-repeat 执行完后处理
-          if (scope.$last) {
+          if (scope.$last || scope.$last === undefined) {
 	        var emojiAttachmentLocation = attrs["emojiAttachmentLocation"] || "bottom right";
 	        var emojiMenuLocation = attrs["emojiMenuLocation"] || "top left";
 	        window.emojiPicker = new EmojiPicker({
