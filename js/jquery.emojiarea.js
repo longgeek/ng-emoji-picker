@@ -664,19 +664,22 @@
 	ngEmojiPicker.directive('emojiPicker',function($parse){
 	  return{
 	    link: function(scope, element, attrs){
-	      var emojiAttachmentLocation = attrs["emojiAttachmentLocation"] || "bottom right";
-	      var emojiMenuLocation = attrs["emojiMenuLocation"] || "top left";
-	      window.emojiPicker = new EmojiPicker({
-	        emojiable_selector: '[emoji-picker="emoji-picker"]',
-	        assetsPath: '/assets/images/ng-emoji-picker',
-	        popupButtonClasses: 'fa fa-smile-o',
-	        emojiAttachmentLocation: emojiAttachmentLocation ,
-	        emojiMenuLocation: emojiMenuLocation
-	      });
-	      // Finds all elements with `emojiable_selector` and converts them to rich emoji input fields
-	      // You may want to delay this step if you have dynamically created input fields that appear later in the loading process
-	      // It can be called as many times as necessary; previously converted input fields will not be converted again
-	      window.emojiPicker.discover();
+          // 等待 ng-repeat 执行完后处理
+          if (scope.$last) {
+	        var emojiAttachmentLocation = attrs["emojiAttachmentLocation"] || "bottom right";
+	        var emojiMenuLocation = attrs["emojiMenuLocation"] || "top left";
+	        window.emojiPicker = new EmojiPicker({
+	          emojiable_selector: '[emoji-picker="emoji-picker"]',
+	          assetsPath: '/assets/images/ng-emoji-picker',
+	          popupButtonClasses: 'fa fa-smile-o',
+	          emojiAttachmentLocation: emojiAttachmentLocation ,
+	          emojiMenuLocation: emojiMenuLocation
+	        });
+	        // Finds all elements with `emojiable_selector` and converts them to rich emoji input fields
+	        // You may want to delay this step if you have dynamically created input fields that appear later in the loading process
+	        // It can be called as many times as necessary; previously converted input fields will not be converted again
+	        window.emojiPicker.discover();
+          }
 	    }
 	  };
 	})
